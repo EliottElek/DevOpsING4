@@ -2,7 +2,7 @@ var redis = require("redis");
 const configure = require('./configure')
 
 const config = configure()
-var client = redis.createClient({
+var db = redis.createClient({
   host: config.redis.host,
   port: config.redis.port,
   retry_strategy: () => {
@@ -11,7 +11,7 @@ var client = redis.createClient({
 })
 
 process.on('SIGINT', function() {
-  client.quit();
+  db.quit();
 });
 
-module.exports = client
+module.exports = db

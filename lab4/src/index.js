@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 
-const client = require('./dbClient')
-client.on("error", (err) => {
+const db = require('./dbClient')
+db.on("error", (err) => {
   console.error(err)
 })
 
